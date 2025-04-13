@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.9
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -57,6 +58,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/icons/
+
+  # assets:
+    # - assets/mastercard.png
+    # - assets/phonepe.png
+    # - assets/googlepay.png
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
@@ -80,7 +89,7 @@ flutter:
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
-  #     fonts:
+  #       fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
