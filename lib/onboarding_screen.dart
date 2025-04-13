@@ -6,16 +6,39 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 20,),
-          Container(
-            height: 454,
-            width: 247,
-            child: Image.asset('assets/images/burger.png', fit: BoxFit.cover),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: 90,),
+              SizedBox(
+                height: 454,
+                width: 247,
+                child: Image.asset('assets/images/burger.png', fit: BoxFit.cover),
+              ),
+              SizedBox(height: 40,),
+              Text('Lets Eat Quality Food', style: TextStyle(fontSize: 30,fontWeight: FontWeight.w700)),
+              SizedBox(height: 10,),
+              Text('Your Go-ToFood Delivery App for Testy'),
+              Text('Treats at Your Doorstep'),
+              SizedBox(height: 40,),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigate to the next screen
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF4CA6A8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                  textStyle: TextStyle(fontSize: 20),
+                ),
+                child: Text('Lets Get Started', style: TextStyle(fontSize: 22,color: Colors.white) ),
+              ),
+            ],
           ),
-          Text('Let,s Eat Quality Food', style: TextStyle(fontSize: 20)),
-        ],
+        ),
       ),
     );
   }
