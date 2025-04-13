@@ -10,8 +10,13 @@ class OnboardingScreen extends StatelessWidget {
         title: const Text('Foodify'),
         backgroundColor: Colors.green,
       ),
-      body: const Center(
-        child: Text('Welcome to Foodify!'),
+      body: Column(
+        children: [
+          
+          const Center(
+            child: Text('Welcome to Foodify!'),
+          ),
+        ],
       ),
     );
   }
