@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodify_app/heading_textfield.dart';
 import 'package:foodify_app/signup_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -39,85 +40,8 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
             const SizedBox(height: 40),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text('Email', style: TextStyle(fontSize: 20)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      spreadRadius: 1,
-                      blurRadius: 6,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text('Password', style: TextStyle(fontSize: 20)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      spreadRadius: 1,
-                      blurRadius: 6,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  child: TextField(
-                    obscureText: _obscurePassword,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      border: InputBorder.none,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscurePassword
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _obscurePassword = !_obscurePassword;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
+            HeadingTextfield(heading: 'Email'),
+            HeadingTextfield(heading: 'Password'),
             Padding(
               padding: const EdgeInsets.only(top: 8, right: 20),
               child: Align(
