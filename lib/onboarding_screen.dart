@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodify_app/signin_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -24,6 +25,12 @@ class OnboardingScreen extends StatelessWidget {
               SizedBox(height: 40,),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignInScreen(),
+                    ),
+                  );
                   // Navigate to the next screen
                 },
                 style: ElevatedButton.styleFrom(
