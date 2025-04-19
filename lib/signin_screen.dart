@@ -41,6 +41,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             const SizedBox(height: 40),
             HeadingTextfield(heading: 'Email'),
+            const SizedBox(height: 10),
             HeadingTextfield(heading: 'Password'),
             Padding(
               padding: const EdgeInsets.only(top: 8, right: 20),

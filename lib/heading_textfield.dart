@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HeadingTextfield extends StatelessWidget {
+class HeadingTextfield extends StatefulWidget {
   final String heading;
 
   const HeadingTextfield({
@@ -9,14 +9,23 @@ class HeadingTextfield extends StatelessWidget {
   });
 
   @override
+  State<HeadingTextfield> createState() => _HeadingTextfieldState();
+}
+
+class _HeadingTextfieldState extends State<HeadingTextfield> {
+  bool _obscureText = true;
+
+  @override
   Widget build(BuildContext context) {
+final isPassword = widget.heading.toLowerCase().contains('password');
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            heading,
+            widget.heading,
             style: const TextStyle(fontSize: 20),
           ),
         ),
@@ -36,11 +45,26 @@ class HeadingTextfield extends StatelessWidget {
               ],
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: TextField(
+                obscureText: isPassword ? _obscureText : false,
                 decoration: InputDecoration(
-                  labelText: 'Enter $heading',
+                  labelText: 'Enter ${widget.heading}',
                   border: InputBorder.none,
+                  suffixIcon: isPassword
+                      ? IconButton(
+                          icon: Icon(
+                            _obscureText
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscureText = !_obscureText;
+                            });
+                          },
+                        )
+                      : null,
                 ),
               ),
             ),
