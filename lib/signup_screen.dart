@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodify_app/home_screen.dart';
+import 'package:foodify_app/signin_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -14,9 +15,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF2F2F2),
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Sign Up'),
+         backgroundColor: const Color(0xFFF2F2F2),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -43,16 +46,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 1,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   child: TextField(
                     decoration: InputDecoration(
-                      labelText: 'Enter your name',
+                      labelText: 'Enter name',
                       border: InputBorder.none,
                     ),
                   ),
@@ -65,10 +76,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 1,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -87,16 +106,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 1,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   child: TextField(
                     decoration: InputDecoration(
-                      labelText: 'Enter your phone number',
+                      labelText: 'Enter phone number',
                       border: InputBorder.none,
                     ),
                   ),
@@ -109,10 +136,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 1,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -144,17 +179,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 1,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   child: TextField(
+                    obscureText: _obscurePassword,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       border: InputBorder.none,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -208,12 +264,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(height: 30),
             const Center(
               child: Text(
-                'Or Sign in with',
+                'Or Sign Up with',
                 style: TextStyle(fontSize: 20, color: Colors.grey),
               ),
             ),
             const SizedBox(height: 20),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -263,14 +318,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ],
             ),
-
             const SizedBox(height: 30),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  "Don't have an account? ",
+                  "Already have an account? ",
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 ),
                 GestureDetector(
@@ -278,12 +331,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignUpScreen(),
+                        builder: (context) => const SignInScreen(),
                       ),
                     );
                   },
                   child: const Text(
-                    'Sign Up',
+                    'Sign In',
                     style: TextStyle(
                       color: Color(0xFF4CA6A8),
                       fontSize: 19,
@@ -293,6 +346,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ],
             ),
+            const SizedBox(height: 60)
           ],
         ),
       ),

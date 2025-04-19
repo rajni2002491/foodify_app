@@ -14,7 +14,12 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text('Sign In')),
+      backgroundColor: const Color(0xFFF2F2F2),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Sign In'),
+        backgroundColor: const Color(0xFFF2F2F2),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,10 +46,18 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 1,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -64,10 +77,18 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      spreadRadius: 1,
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -103,7 +124,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: () {
-                    
+                    // Handle Forgot Password
                   },
                   child: const Text(
                     'Forgot Password?',
