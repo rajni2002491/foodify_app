@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:foodify_app/signup_screen.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Sign In'),
-      ),
+      appBar: AppBar(centerTitle: true, title: const Text('Sign In')),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,87 +35,121 @@ class SignInScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
 
-            // Email label
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Email',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-              ),
+              child: Text('Email', style: TextStyle(fontSize: 20)),
             ),
-
-            // Email field
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // Password label
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Password',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-              ),
-            ),
-
-            // Password field
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-
-            // Forgot Password
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              child: Text(
-                'Forgot Password?',
-                style: TextStyle(
-                  color: Color(0xFF4CA6A8),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+              child: Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text('Password', style: TextStyle(fontSize: 20)),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              child: Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 4,
+                  ),
+                  child: TextField(
+                    obscureText: _obscurePassword,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      border: InputBorder.none,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 8, right: 20),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () {
+                    
+                  },
+                  child: const Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                      color: Color(0xFF4CA6A8),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
               ),
             ),
 
             const SizedBox(height: 30),
 
-            // Sign In button
             Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle sign-in
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4CA6A8),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+              child: SizedBox(
+                width: 335, // Set your desired fixed width
+                height: 55, // Optional: set a fixed height too
+                child: ElevatedButton(
+                  onPressed: () {
+                    // TODO: Handle sign-in logic
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpScreen(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF4CA6A8),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
-                  textStyle: const TextStyle(fontSize: 20),
-                ),
-                child: const Text(
-                  'Sign In',
-                  style: TextStyle(fontSize: 22, color: Colors.white),
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(fontSize: 22, color: Colors.white),
+                  ),
                 ),
               ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 60),
 
-            // Or sign in with
             const Center(
               child: Text(
                 'Or Sign in with',
@@ -119,37 +158,81 @@ class SignInScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Social media icons
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  backgroundColor: const Color.fromARGB(255, 254, 250, 250),
-                  radius: 20,
-                  child: Image.asset(
-                    'assets/images/google.png',
-                    height: 30,
-                    width: 30,
+                GestureDetector(
+                  onTap: () {
+                    print('Google Sign-In');
+                  },
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 25,
+                    child: Image(
+                      image: AssetImage('assets/images/google.png'),
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 20),
-                CircleAvatar(
-                  backgroundColor: const Color.fromARGB(255, 254, 250, 250),
-                  radius: 20,
-                  child: Image.asset(
-                    'assets/images/facebook.png',
-                    height: 30,
-                    width: 30,
+                GestureDetector(
+                  onTap: () {
+                    print('Facebook Sign-In');
+                  },
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 25,
+                    child: Image(
+                      image: AssetImage('assets/images/facebook.png'),
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 20),
-                CircleAvatar(
-                  backgroundColor: const Color.fromARGB(255, 254, 250, 250),
-                  radius: 20,
-                  child: Image.asset(
-                    'assets/images/apple.png',
-                    height: 30,
-                    width: 30,
+                GestureDetector(
+                  onTap: () {
+                    print('Apple Sign-In');
+                  },
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 25,
+                    child: Image(
+                      image: AssetImage('assets/images/apple.png'),
+                      height: 30,
+                      width: 30,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 30),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Don't have an account? ",
+                  style: TextStyle(color: Colors.grey, fontSize: 16),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      color: Color(0xFF4CA6A8),
+                      fontSize: 19,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],
