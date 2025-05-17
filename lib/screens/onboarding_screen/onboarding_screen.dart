@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:foodify_app/constant/constant.dart';
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
@@ -12,10 +13,9 @@ class OnboardingScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          
-          const Center(
-            child: Text('Welcome to Foodify!'),
-          ),
+          Image.asset('assets/images/onboarding.png',height: 454,width: 247, ),
+          Text('Let’s Eat Quality Food', style: AppStyle.headingMedium,),
+          Text("Your Go-To Food Delivery App for Tasty Treats at Your Doorstep",style:AppStyle.bodyMedium,)
         ],
       ),
     );
